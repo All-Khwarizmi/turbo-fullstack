@@ -1,81 +1,60 @@
-# Turborepo starter
+# Turbo Full Stack Starter
 
-This is an official starter Turborepo.
+Un starter kit moderne pour applications full stack, utilisant une architecture monorepo avec TurboRepo.
 
-## Using this example
+## 🏗️ Architecture
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
+```bash
+.
+├── apps/
+│   ├── api/           # Backend NestJS
+│   └── web/          # Frontend React + Vite (à venir)
+├── packages/
+│   ├── ui/           # Composants UI partagés
+│   ├── types/        # Types/interfaces partagés
+│   └── config/       # Configurations partagées
+└── README.md         # Ce fichier
 ```
 
-## What's inside?
+## 🚀 Quick Start
 
-This Turborepo includes the following packages/apps:
+```bash
+# Installation des dépendances
+pnpm install
 
-### Apps and Packages
+# Démarrer la base de données
+docker-compose up -d
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+# Setup de la base de données
+cd apps/api && pnpm run db:setup
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
+# Démarrer le développement
 pnpm dev
 ```
 
-### Remote Caching
+## 📚 Stack Technique
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### Backend (NestJS)
+- NestJS pour l'API REST
+- PostgreSQL avec requêtes SQL natives (pas d'ORM)
+- Docker pour la conteneurisation
+- Swagger pour la documentation API
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+### Frontend (à venir)
+- React + Vite
+- Redux Toolkit
+- shadcn/ui
+- React Router
 
-```
-cd my-turborepo
-npx turbo login
-```
+### Outils & Qualité
+- TypeScript
+- ESLint & Prettier
+- Tests avec Vitest
+- Docker & Docker Compose
+- CI/CD avec GitHub Actions
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## 📖 Documentation Détaillée
+- [Documentation API](./apps/api/README.md)
+- [Documentation Frontend](./apps/web/README.md)
+- [Guide Base de Données](./apps/api/db/README.md)
+- [Guide Docker](./docs/docker.md)
